@@ -38,8 +38,8 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (role == RoleUsuario.ADMINISTRADOR) return List.of(new SimpleGrantedAuthority("ADMINISTRADOR"), new SimpleGrantedAuthority("USUARIO"));
-        else return List.of(new SimpleGrantedAuthority("USUARIO"));
+        if (role == RoleUsuario.ADMINISTRADOR) return List.of(new SimpleGrantedAuthority("ROLE_ADMINISTRADOR"), new SimpleGrantedAuthority("ROLE_USUARIO"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"));
     }
 
     @Override
