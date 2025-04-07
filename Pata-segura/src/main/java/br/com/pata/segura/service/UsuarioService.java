@@ -1,7 +1,10 @@
 package br.com.pata.segura.service;
 
 import br.com.pata.segura.configuration.TokenService;
-import br.com.pata.segura.domain.*;
+import br.com.pata.segura.domain.usuario.AtualizarUsuarioDTO;
+import br.com.pata.segura.domain.usuario.CriarUsuarioDTO;
+import br.com.pata.segura.domain.usuario.LoginUsuarioDTO;
+import br.com.pata.segura.domain.usuario.Usuario;
 import br.com.pata.segura.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

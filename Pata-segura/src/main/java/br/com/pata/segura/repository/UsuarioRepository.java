@@ -1,6 +1,6 @@
 package br.com.pata.segura.repository;
 
-import br.com.pata.segura.domain.Usuario;
+import br.com.pata.segura.domain.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

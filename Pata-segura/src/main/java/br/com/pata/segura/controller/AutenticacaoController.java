@@ -1,13 +1,11 @@
 package br.com.pata.segura.controller;
 
 import br.com.pata.segura.configuration.TokenService;
-import br.com.pata.segura.domain.LoginResponseDTO;
-import br.com.pata.segura.domain.LoginUsuarioDTO;
+import br.com.pata.segura.domain.usuario.LoginUsuarioDTO;
 import br.com.pata.segura.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,8 @@
 package br.com.pata.segura.controller;
 
-import br.com.pata.segura.domain.AtualizarUsuarioDTO;
-import br.com.pata.segura.domain.CriarUsuarioDTO;
-import br.com.pata.segura.domain.Usuario;
+import br.com.pata.segura.domain.usuario.AtualizarUsuarioDTO;
+import br.com.pata.segura.domain.usuario.CriarUsuarioDTO;
+import br.com.pata.segura.domain.usuario.Usuario;
 import br.com.pata.segura.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

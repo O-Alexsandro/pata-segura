@@ -1,4 +1,4 @@
-package br.com.pata.segura.domain;
+package br.com.pata.segura.domain.usuario;
 
 import jakarta.persistence.*;
 import lombok.*;
