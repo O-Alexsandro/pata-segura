@@ -1,9 +1,6 @@
 package br.com.pata.segura.controller;
 
-import br.com.pata.segura.domain.animal.Animal;
-import br.com.pata.segura.domain.animal.CriarAnimalPerdidoDTO;
-import br.com.pata.segura.domain.animal.ResponseAnimalDTO;
-import br.com.pata.segura.domain.animal.ResponsePublicoAnimalDTO;
+import br.com.pata.segura.domain.animal.*;
 import br.com.pata.segura.service.AnimalService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +32,23 @@ public class AnimalController {
     public ResponseEntity<Page<ResponsePublicoAnimalDTO>> listarTodosOsAnimais(Pageable pageable){
         var animais = animalService.listarTodosOsAnimaisCadastrados(pageable);
         return ResponseEntity.ok(animais);
+    }
+
+    @GetMapping("/publico/{id}")
+    public ResponseEntity<ResponsePublicoAnimalDTO> listarAnimaisPorId(@PathVariable long id){
+        var animais = animalService.listarAnimalPorID(id);
+        return ResponseEntity.ok(animais);
+    }
+
+    @PostMapping("/publico/filtros")
+    public ResponseEntity<Page<Animal>> listarTodosOsAnimaisComFiltro(@RequestBody FiltroBuscaAnimalDTO filtro, Pageable pageable){
+        var filtragem = animalService.listarTodosOsAnimaisPorFiltro(filtro, pageable);
+        return ResponseEntity.ok(filtragem);
+    }
+
+    @PutMapping("/atualizar")
+    public ResponseEntity<AtualizarAnimalDTO> atualizarAnimalPorId(@RequestBody @Valid AtualizarAnimalDTO dados){
+        var animalAtualizado = animalService.atualizarAnimalPorId(dados);
+        return ResponseEntity.ok(animalAtualizado);
     }
 }
