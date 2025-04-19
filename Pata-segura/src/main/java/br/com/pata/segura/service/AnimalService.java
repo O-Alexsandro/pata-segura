@@ -53,7 +53,7 @@ public class AnimalService {
     }
 
     //Lista todos os animais cadastrados na plataforma com filtros de busca - acesso público
-    public Page<Animal> listarTodosOsAnimaisPorFiltro(FiltroBuscaAnimalDTO filtro, Pageable pageable){
+    public Page<ResponseFiltroBuscaAnimalDTO> listarTodosOsAnimaisPorFiltro(FiltroBuscaAnimalDTO filtro, Pageable pageable){
         Specification<Animal> specs = Specification.where(null);
 
         if (filtro.nome() != null && !filtro.nome().isBlank()){
@@ -71,10 +71,9 @@ public class AnimalService {
                     builder.like(builder.lower(root.get("cor")), "%" + filtro.cor().toLowerCase() + "%"));
         }
 
-        if (filtro.descricao() != null && !filtro.descricao().isBlank()){
-            specs = specs.and(((root, query, builder)->
-                    builder.like(builder.lower(root.get("descricao")), "%" + filtro.descricao() + "%")));
-        }
+        StatusAnimal status = filtro.status() != null ? filtro.status() : StatusAnimal.PERDIDO;
+        specs = specs.and((root, query, builder) ->
+                builder.equal(root.get("status"), status));
 
         if (filtro.dataDesaparecimento() != null){
             specs = specs.and((root, query, builder) ->
@@ -93,7 +92,9 @@ public class AnimalService {
             }
         }
 
-        return animalRepository.findAll(specs, pageable);
+        var retornoFiltro = animalRepository.findAll(specs, pageable);
+
+        return retornoFiltro.map(ResponseFiltroBuscaAnimalDTO::fromEntity);
     }
 
     public ResponsePublicoAnimalDTO listarAnimalPorID(Long id){

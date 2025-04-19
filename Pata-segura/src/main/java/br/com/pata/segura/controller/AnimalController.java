@@ -41,7 +41,7 @@ public class AnimalController {
     }
 
     @PostMapping("/publico/filtros")
-    public ResponseEntity<Page<Animal>> listarTodosOsAnimaisComFiltro(@RequestBody FiltroBuscaAnimalDTO filtro, Pageable pageable){
+    public ResponseEntity<Page<ResponseFiltroBuscaAnimalDTO>> listarTodosOsAnimaisComFiltro(@RequestBody FiltroBuscaAnimalDTO filtro, Pageable pageable){
         var filtragem = animalService.listarTodosOsAnimaisPorFiltro(filtro, pageable);
         return ResponseEntity.ok(filtragem);
     }
