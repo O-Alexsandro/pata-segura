@@ -2,6 +2,7 @@ package br.com.pata.segura.controller;
 
 import br.com.pata.segura.domain.animal.*;
 import br.com.pata.segura.service.AnimalService;
+//import br.com.pata.segura.storage.StorageService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,9 @@ public class AnimalController {
 
     @Autowired
     private AnimalService animalService;
+
+//    @Autowired
+//    private StorageService storageService;
 
     @PostMapping
     public ResponseEntity<Animal> criarAnimal(@RequestBody @Valid CriarAnimalPerdidoDTO dados){
